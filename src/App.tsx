@@ -1,12 +1,10 @@
-import React from 'react';
-
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p>
+        <h1  className="text-3xl font-bold underline">
           Edit <code>src/App.tsx</code> and save to reload.
-        </p>
+        </h1>
       </header>
     </div>
   );
