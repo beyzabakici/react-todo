@@ -1,8 +1,7 @@
 import { SearchIcon } from "@heroicons/react/solid";
-
 import { PlusSmIcon } from "@heroicons/react/outline";
 
-export default function Navbar({ setModalVisible }: any) {
+const Navbar = (props) => {
   return (
     <>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
@@ -36,7 +35,7 @@ export default function Navbar({ setModalVisible }: any) {
               <button
                 type="button"
                 className="inline-flex items-center px-5 py-2 rounded-full bg-purple-50 text-sm font-medium text-purple-700 hover:bg-purple-100"
-                onClick={setModalVisible(true)}
+                onClick={() => props.setModalVisible(true)}
               >
                 <PlusSmIcon
                   className="-ml-1 mr-0.5 h-5 w-5 text-purple-400"
@@ -50,4 +49,6 @@ export default function Navbar({ setModalVisible }: any) {
       </div>
     </>
   );
-}
+};
+
+export default Navbar;

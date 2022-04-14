@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { CheckIcon, SparklesIcon } from "@heroicons/react/solid";
 
-function classNames(...classes: any) {
+function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function TodoCard({ event }: any) {
-  const [selected, setSelected] = useState<boolean>(false);
-  const [marked, setMarked] = useState<boolean>(false);
+export default function TodoCard({ event }) {
+  const [selected, setSelected] = useState(false);
+  const [marked, setMarked] = useState(false);
   return (
     <div className="relative pb-8">
       <button
