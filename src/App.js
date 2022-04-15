@@ -1,31 +1,27 @@
 import { useState } from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
-import Favorites from "./pages/Favorites";
+import AddModal from "./components/AddModal";
 import Home from "./pages/Home";
-import ThisMonth from "./pages/ThisMonth";
-import ThisYear from "./pages/ThisYear";
+
 
 export default function App() {
-  const [modalVisible, setModalVisible] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
   return (
-    <div className="min-h-full">
-      <Navbar
-        modalVisible={modalVisible}
-        setModalVisible={(r) => setModalVisible(r)}
-      />
-      <div className="py-10">
-        <div className="max-w-3xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-12 lg:gap-8">
-          <Sidebar />
-          <div className="flex-1">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/this-month" element={<ThisMonth />} />
-              <Route path="/this-year" element={<ThisYear />} />
-              <Route path="/favorites" element={<Favorites />} />
-            </Routes>
-          </div>
+    <div className="min-h-full max-w-3xl mx-auto mt-8">
+      <Navbar modalVisibility={() => setShowModal(true)} />
+      { showModal && <AddModal setModalVisible={(bool) => setShowModal(bool)}/> }
+      <div className="py-10 flex justify-center">
+        <Sidebar />
+        <div>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/today" element={<Home />} />
+            <Route path="/this-week" element={<Home />} />
+            <Route path="/this-month" element={<Home />} />
+          </Routes>
         </div>
       </div>
     </div>
