@@ -7,7 +7,6 @@ const Home = () => {
   const [pageTitle, setPageTitle] = useState('');
   const location = useLocation();
 
-  
   const todos = useSelector((state) => state.todos);
   const favorites = useSelector((state) => state.todos.filter(todo => todo.isFavoriteItem === true));
  
@@ -28,10 +27,10 @@ const Home = () => {
   }
 
   return (
-    <div>
+    <>
       <h1 className="pb-6 text-lg">{ pageTitle }</h1>
       <TodoList todos={pageTitle.includes('favorites')? favorites : todos}/>
-    </div>
+    </>
   );
 };
 

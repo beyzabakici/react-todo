@@ -4,40 +4,56 @@ import {
   LocationMarkerIcon,
   CalendarIcon,
 } from "@heroicons/react/outline";
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 const Sidebar = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    decidePath(location.pathname)
+  }, [location]);
+
+  const decidePath = (path) => {
+    console.log(path, location.pathname);
+    if (path.includes(location.pathname)) {
+      return "group flex items-center space-x-2 px-4 py-3 text-sm font-medium rounded-md bg-gray-200 text-gray-900"
+    }  else {
+      return "group flex items-center space-x-2 px-4 py-3 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-50"
+    }
+  }
+
   return (
-    <div className="w-full max-w-xs mr-8 hidden md:block">
+    <div className="max-w-xs mr-8 hidden md:block">
       <nav
         aria-label="Sidebar"
         className="sticky top-4 divide-y divide-gray-300"
       >
-        <div className="pb-8 space-y-1">
+        <div className="pb-8 space-y-2">
           <Link
             to="/"
-            className="group flex items-center space-x-2 px-3 py-2 text-sm font-medium rounded-md bg-gray-200 text-gray-900 "
+            className={[" ", decidePath("/") ]}
           >
             <LocationMarkerIcon className="w-5 h-5 " />
             <span>Today</span>
           </Link>
           <Link
             to="/this-week"
-            className="group flex items-center space-x-2 px-3 py-2 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-50 "
+            className={decidePath("/this-week")}
           >
             <TableIcon className="w-5 h-5 " />
             <span> This Week</span>
           </Link>
           <Link
             to="/this-month"
-            className="group flex items-center space-x-2 px-3 py-2 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-50 "
+            className={decidePath("/this-month")}
           >
             <CalendarIcon className="w-5 h-5 " />
             <span> This Month</span>
           </Link>
           <Link
-            to="/"
-            className="group flex items-center space-x-2 px-3 py-2 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-50 "
+            to="/favorites"
+            className={decidePath("/favorites")}
           >
             <SparklesIcon className="w-5 h-5 " />
             <span>Favorites</span>

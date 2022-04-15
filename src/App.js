@@ -10,17 +10,17 @@ export default function App() {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <div className="min-h-full max-w-3xl mx-auto mt-8">
+    <div className="min-h-full max-w-3xl mx-auto mt-8 ">
       <Navbar modalVisibility={() => setShowModal(true)} />
       { showModal && <AddModal setModalVisible={(bool) => setShowModal(bool)}/> }
       <div className="py-10 flex justify-center">
         <Sidebar />
-        <div>
+        <div className="flex-auto">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/today" element={<Home />} />
             <Route path="/this-week" element={<Home />} />
             <Route path="/this-month" element={<Home />} />
+            <Route path="/favorites" element={<Home />} />
           </Routes>
         </div>
       </div>
