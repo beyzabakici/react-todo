@@ -1,58 +1,25 @@
 import TodoCard from "./TodoCard";
+import { CheckIcon, SparklesIcon } from "@heroicons/react/solid";
 
-const timeline = [
-  {
-    id: 1,
-    content: "Applied to",
-    target: "Front End Developer",
-    href: "#",
-    date: "Sep 20",
-    datetime: "2020-09-20",
-  },
-  {
-    id: 2,
-    content: "Advanced to phone screening by",
-    target: "Bethany Blake",
-    href: "#",
-    date: "Sep 22",
-    datetime: "2020-09-22",
-  },
-  {
-    id: 3,
-    content: "Completed phone screening with",
-    target: "Martha Gardner",
-    href: "#",
-    date: "Sep 28",
-    datetime: "2020-09-28",
-  },
-  {
-    id: 4,
-    content: "Advanced to interview by",
-    target: "Bethany Blake",
-    href: "#",
-    date: "Sep 30",
-    datetime: "2020-09-30",
-  },
-  {
-    id: 5,
-    content: "Completed interview with",
-    target: "Katherine Snyder",
-    href: "#",
-    date: "Oct 4",
-    datetime: "2020-10-04",
-  },
-];
-
-export default function TodoList() {
+export default function TodoList({ todos }) {
   return (
     <div className="flow-root">
       <ul role="list" className="-mb-8">
-        {timeline.map((event) => (
+        {todos.map((event) => (
           <li key={event.id}>
-            <TodoCard event={event} />
+            <div className="relative pb-8">
+              {event !== todos[todos.length - 1] ? (
+                <span
+                  className=" top-4 left-4 -ml-px h-full w-0.5 bg-gray-200"
+                  aria-hidden="true"
+                />
+              ) : null}
+              <TodoCard event={event} />
+            </div>
           </li>
         ))}
       </ul>
+      
     </div>
   );
 }
