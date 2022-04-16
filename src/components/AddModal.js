@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { add } from "../features/todoSlice";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -9,13 +9,14 @@ function AddModal({ setModalVisible }) {
   const [date, setDate] = useState(new Date());
   const [content, setContent] = useState("");
   const dispatch = useDispatch();
-
+  
   const onSave = () => {
     dispatch(add({
       content: content, 
-      date: date.toUTCString()
+      date: date
     }));
     setContent("");
+    setModalVisible(false);
   };
 
   return (

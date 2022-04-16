@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-
-const initialState = [];
+import { loadState, saveState } from "../localstorage";
+const initialState = loadState() ? loadState: [];
 
 const todoSlice = createSlice({
   name: "todos",
@@ -15,6 +15,7 @@ const todoSlice = createSlice({
         isFavoriteItem: false,
       };
       state.push(newTodo);
+      saveState(state);
     },
     remove: (state, action) => {
       state.filter((todo) => todo.id !== action.payload);

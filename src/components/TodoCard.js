@@ -12,6 +12,15 @@ export default function TodoCard({ event }) {
   const [selected, setSelected] = useState(event.isCompleted);
   const [marked, setMarked] = useState(event.isFavori);
   const dispatch = useDispatch();
+
+  const dateOptions = {
+    weekday: "long",
+    month: "long",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric"
+
+  };
   const onFavoriteItem = () => {
     if (marked) {
       dispatch(removeFavorite(event.id));
@@ -29,6 +38,12 @@ export default function TodoCard({ event }) {
     setSelected(!selected);
   };
 
+  const decideCheck = () => {
+    return selected
+      ? "bg-green-400 h-8 w-8 rounded-full flex items-center justify-center ring-8 ring-white"
+      : "bg-gray-300 h-8 w-8 rounded-full flex items-center justify-center ring-8 ring-white";
+  };
+
   return (
     <>
       <button
@@ -36,12 +51,7 @@ export default function TodoCard({ event }) {
         onClick={() => onMarkItem()}
         onDoubleClick={() => onFavoriteItem()}
       >
-        <span
-          className={[
-            selected ? "bg-green-500" : "bg-gray-900",
-            "h-8 w-8 rounded-full flex items-center justify-center ring-8 ring-white",
-          ]}
-        >
+        <span className={decideCheck()}>
           {selected && (
             <CheckIcon className="h-5 w-5 text-white" aria-hidden="true" />
           )}
@@ -49,12 +59,14 @@ export default function TodoCard({ event }) {
         <div className="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
           <div>
             <p className="text-sm text-gray-500 todo-content">
-              {event.title}{" "}
-              <span className="font-medium text-gray-900">{event.title}</span>
+              {event.content}{" "}
+              <span className="font-medium text-gray-900">{event.content}</span>
             </p>
           </div>
           <div className="text-right text-sm whitespace-nowrap text-gray-500">
-            {/* <time dateTime={event.datetime}>{event.date}</time> */}
+            <time dateTime={event.date}>
+              {event.date}
+            </time>
           </div>
           {marked && (
             <SparklesIcon

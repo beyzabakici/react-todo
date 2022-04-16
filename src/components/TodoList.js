@@ -1,5 +1,4 @@
 import TodoCard from "./TodoCard";
-import { CheckIcon, SparklesIcon } from "@heroicons/react/solid";
 
 export default function TodoList({ todos }) {
   return (
@@ -8,12 +7,12 @@ export default function TodoList({ todos }) {
         {todos.map((event) => (
           <li key={event.id}>
             <div className="relative pb-8">
-              {event !== todos[todos.length - 1] ? (
+              {/* {event !== todos[todos.length - 1] ? (
                 <span
                   className=" top-4 left-4 -ml-px h-full w-0.5 bg-gray-200"
                   aria-hidden="true"
                 />
-              ) : null}
+              ) : null} */}
               <TodoCard event={event} />
             </div>
           </li>

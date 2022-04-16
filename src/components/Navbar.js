@@ -3,8 +3,8 @@ import { PlusSmIcon } from "@heroicons/react/outline";
 
 const Navbar = (props) => {
   return (
-    <div className="flex items-center md:px-0 px-4">
-      <div className="min-w-0 flex-1 mr-8">
+    <div className="flex justify-end items-center md:px-0 px-4">
+      {/* <div className="min-w-0 flex-1 mr-8">
         <div className="flex items-center">
           <div className="w-full">
             <label htmlFor="search" className="sr-only">
@@ -27,7 +27,7 @@ const Navbar = (props) => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
         <button
           type="button"
           className="inline-flex items-center px-3 py-2 rounded-full bg-purple-50 text-sm font-medium text-purple-700 hover:bg-purple-100"
