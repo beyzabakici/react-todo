@@ -5,3 +5,7 @@
 .modalcontent {
   min-height: 400px;
 }
+
+.list:not(:last-child) .line {
+  height: 100%;
+}

@@ -7,15 +7,13 @@ import "react-datepicker/dist/react-datepicker.css";
 
 function AddModal({ setModalVisible }) {
   const [date, setDate] = useState(new Date());
-  const [content, setContent] = useState("");
+  const [content, setContent] = useState('');
+
   const dispatch = useDispatch();
   
   const onSave = () => {
-    dispatch(add({
-      content: content, 
-      date: date
-    }));
-    setContent("");
+    dispatch(add({ content: content,  date: date  }));
+    setContent('');
     setModalVisible(false);
   };
 
@@ -44,6 +42,7 @@ function AddModal({ setModalVisible }) {
               <DatePicker
                 className="mb-6 bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-purple-500 dark:focus:border-purple-500"
                 selected={date}
+                minDate={new Date()}
                 onChange={(date) => setDate(date)}
               />
               <input

@@ -5,14 +5,13 @@ import Sidebar from "./components/Sidebar";
 import AddModal from "./components/AddModal";
 import Home from "./pages/Home";
 
-
 export default function App() {
   const [showModal, setShowModal] = useState(false);
 
   return (
     <div className="min-h-full max-w-3xl mx-auto mt-8 ">
       <Navbar modalVisibility={() => setShowModal(true)} />
-      { showModal && <AddModal setModalVisible={(bool) => setShowModal(bool)}/> }
+      {showModal && <AddModal setModalVisible={(bool) => setShowModal(bool)} />}
       <div className="py-10 flex justify-center">
         <Sidebar />
         <div className="flex-auto">

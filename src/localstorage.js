@@ -18,12 +18,3 @@ export const saveState = (state) => {
       console.log(err);
   }
 };
-
-export const updateState = (state) => {
-  try {
-    const serialState = JSON.stringify(state);
-    localStorage.setItem('appState', serialState);
-  } catch(err) {
-      console.log(err);
-  }
-};

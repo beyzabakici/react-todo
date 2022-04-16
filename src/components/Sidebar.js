@@ -15,11 +15,11 @@ const Sidebar = () => {
   }, [location]);
 
   const decidePath = (path) => {
-    if (path == location.pathname) {
-      return "group flex items-center space-x-2 px-4 py-3 text-sm font-medium rounded-md bg-rose-50 text-rose-500";
-    } else {
-      return "group flex items-center space-x-2 px-4 py-3 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-50";
+    if (path === location.pathname) {
+      return "group flex items-center space-x-2 px-4 py-3 text-sm font-medium rounded-md bg-purple-50 text-purple-700";
     }
+
+    return "group flex items-center space-x-2 px-4 py-3 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-50";
   };
 
   return (
